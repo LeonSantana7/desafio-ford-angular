@@ -1,0 +1,20 @@
+.row{
+    max-height: 80vh; /* Opcional: evita que ocupe a tela toda */
+    overflow-y: auto; /* Adicione scroll se o conteúdo for muito grande */
+
+}
+
+.forms{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.forms-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
