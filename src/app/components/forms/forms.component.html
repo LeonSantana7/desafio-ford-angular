@@ -1,14 +1,23 @@
-<div class="container mt-4" >
+<div class="container">
     <div class="row align-items-center">
         <div class="col-md-10 mx-auto col-lg-12">
-            <form [formGroup]="forms" class="p-4 p-md-5 border rounded-3 bg-light">
+            <form [formGroup]="forms" (ngSubmit)="salvar()" class="p-4 p-md-5 border rounded-3 bg-light">
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" formControlName="email" name="email">
-                    <label for="inputEmail">E-mail</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="E-mail"
+                        formControlName="email" name="email">
+                    <label for="inputEmail">E-mail: *</label>
+                    <div *ngIf="isCampoInvalido('email')" class="text-danger">
+                        <small *ngIf="forms.get('email')?.hasError('required')">Campo obrigatório</small>
+                        <small *ngIf="forms.get('email')?.hasError('email')">Digite um email válido</small>
+                    </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Senha" formControlName="password" name="password">
-                    <label for="inputPassword">Senha</label>
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Senha"
+                        formControlName="password" name="password">
+                    <label for="inputPassword">Senha: *</label>
+                    <span class="text-danger small" *ngIf="isCampoInvalido('password')">
+                        Campo Obrigatório
+                    </span>
                 </div>
                 <div class="form-check mb-4 ps-6 float-end">
                     <input class="form-check-input" type="checkbox" id="rememberLogin">
@@ -16,7 +25,7 @@
                         Logar automaticamente
                     </label>
                 </div>
-                <button class="btn btn-lg btn-success w-100 py-1"  type="submit">Entrar</button>
+                <button class="btn btn-lg btn-success w-100 py-1" type="submit">Entrar</button>
 
             </form>
         </div>
