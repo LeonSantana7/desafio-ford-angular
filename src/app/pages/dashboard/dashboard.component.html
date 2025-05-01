@@ -1,0 +1,112 @@
+<app-navbar (sidebarToggle)="onSidebarToggle()"></app-navbar>
+<app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>
+
+<div class="container-fluid overflow-hidden">
+
+    <div class="row">
+        <div class="col-12 text-center my-4">
+            <h1 class="fw-bold">Dashboard FORD</h1>
+        </div>
+    </div>
+
+
+    <div class="row justify-content-center mb-4">
+        <div class="col-12 col-sm-8 col-md-4">
+            <form [formGroup]="selectCarForm">
+                <label for="carSelect" class="form-label">Veículo</label>
+                <select class="form-select" formControlName="carSelect">
+                    <option *ngFor="let car of vehicles" [value]="car.id">{{ car.vehicle }}</option>
+                </select>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="row text-center mb-4">
+        <div class="col-12 col-sm-6 col-md-3 mb-3">
+            <div class="card shadow border-primary">
+                <div class="card-body">
+                    <h6 class="text-muted">Total de Vendas</h6>
+                    <h4 class="text-primary">{{ selectedVehicle.volumetotal || 0 }} <span class="fs-6">Unid.</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 mb-3">
+            <div class="card shadow border-success">
+                <div class="card-body">
+                    <h6 class="text-muted">Conectados</h6>
+                    <h4 class="text-success">{{ selectedVehicle.connected || 0 }} <span class="fs-6">Unid.</span></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 mb-3">
+            <div class="card shadow border-warning">
+                <div class="card-body">
+                    <h6 class="text-muted">Update Software</h6>
+                    <h4 class="text-warning">{{ selectedVehicle.softwareUpdates || 0 }} <span class="fs-6">Unid.</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 mb-3">
+            <div class="card shadow border-info">
+                <div class="card-body">
+                    <h6 class="text-muted">Modelo</h6>
+                    <h4 class="text-info">{{ selectedVehicle.vehicle || '---' }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-4">
+        <div class="col-12 text-center">
+            <img [src]="selectedVehicle.img || 'http://localhost:3001/img/mustang.png'"
+                class="img-fluid mx-auto d-block" style="max-height: 50vh; width: 100%; max-width: 400px;"
+                alt="Carro selecionado" />
+        </div>
+    </div>
+    <div class="row justify-content-center mb-4">
+        <div class="col-12 col-sm-10 col-md-6">
+            <form [formGroup]="searchCarVinForm">
+                <label for="vinInput" class="form-label">Buscar por VIN</label>
+                <input id="vinInput" formControlName="vinInput" type="text" class="form-control"
+                    placeholder="Digite o código VIN" />
+            </form>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-bordered text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Código - Vin</th>
+                            <th>Odômetro</th>
+                            <th>Nível de Combustível</th>
+                            <th>Status</th>
+                            <th>Lat.</th>
+                            <th>Long.</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="vehicleData">
+                        <tr>
+                            <td>{{ searchCarVinForm.value.vinInput }}</td>
+                            <td>{{ vehicleData.odometro }} km</td>
+                            <td>{{ vehicleData.nivelCombustivel }}%</td>
+                            <td>{{ vehicleData.status }}</td>
+                            <td>{{ vehicleData.lat }}</td>
+                            <td>{{ vehicleData.long }}</td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="!vehicleData">
+                        <tr>
+                            <td colspan="6">Nenhum dado de veículo carregado.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

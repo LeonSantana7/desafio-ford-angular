@@ -1,0 +1,11 @@
+<app-navbar (sidebarToggle)="onSidebarToggle()"></app-navbar>
+<app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>
+
+<div class="d-flex justify-content-center align-items-center min-vh-100 position-relative bg-light">
+    <img src="http://localhost:3001/img/ranger.png" alt="Imagem centralizada" class="img-fluid cursor-pointer"
+        style="max-height: 50vh;" (click)="mostrarCard()">
+
+    <app-card *ngIf="exibirCard" (fechar)="fecharCard()" class="position-fixed top-50 start-50 translate-middle"
+        style="z-index: 1050;">
+    </app-card>
+</div>

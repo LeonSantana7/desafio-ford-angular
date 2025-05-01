@@ -1,20 +1,17 @@
-.row{
-    max-height: 80vh; /* Opcional: evita que ocupe a tela toda */
-    overflow-y: auto; /* Adicione scroll se o conteúdo for muito grande */
-
+/* Garante que nenhum elemento interno force overflow */
+app-forms {
+    display: block;
+    max-height: 100%;
 }
 
-.forms{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
+/* Remove margens padrão que possam causar scroll */
+body,
+html {
+    margin: 0;
+    padding: 0;
 }
 
-.forms-img-container {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
+app-forms {
+    display: block;
+    width: 100% !important;
 }
-

@@ -1,0 +1,24 @@
+.container-fluid {
+    padding: 1rem;
+    overflow-x: hidden;
+}
+
+
+app-sidebar {
+    transition: all 0.3s ease-in-out;
+    z-index: 1050;
+}
+
+
+@media (max-width: 768px) {
+
+    app-navbar,
+    app-sidebar {
+        width: 100%;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}

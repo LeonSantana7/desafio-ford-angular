@@ -1,0 +1,14 @@
+.input-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #6c757d;
+    pointer-events: none;
+    font-size: 0.9rem;
+    z-index: 3;
+}
+
+.input-with-icon {
+    padding-left: 2rem;
+}

@@ -1,0 +1,18 @@
+.form-check.form-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-check-label {
+    font-size: 14px;
+    color: #555;
+}
+
+.form-check-input:checked {
+    background-color: #4caf50;
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
